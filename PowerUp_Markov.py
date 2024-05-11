@@ -4,26 +4,50 @@ import Markov as MK
 class PowerUpMarkovClass():
     def __init__(self):
         
-        valores = {
-        60 : 1,
-        40 : 2
+        probsMunicion = {
+            10 : 1, #Municion - obtener municion
+            40 : 2, #Municion - obtener vida
+            30 : 3, #Municion - obtener velocidad
+            20 : 4  #Municion - obtener escudo
         }
-        mimonte = MC.run(valores, 100000)
+        municion = MC.run(probsMunicion, 100000)
 
-        valores2 = {
-            20 : 2,
-            80 : 1
+        probsVida = {
+            40 : 1, #Vida - obtener municion
+            10 : 2, #Vida - obtener vida
+            20 : 3, #Vida - obtener velocidad
+            30 : 4  #Vida - obtener escudo
         }
-        mimonte2 = MC.run(valores2, 100000)
+        vida = MC.run(probsVida, 100000)
+
+        probsVelocidad = {
+            15 : 1, #Velocidad - obtener municion
+            15 : 2, #Velocidad - obtener vida
+            10 : 3, #Velocidad - obtener velocidad
+            60 : 4  #Velocidad - obtener escudo
+        }
+        velocidad = MC.run(probsVelocidad, 100000)
+
+        probsEscudo = {
+            80 : 1, #Escudo - obtener municion
+            10 : 2, #Escudo - obtener vida
+            5 : 3,  #Escudo - obtener velocidad
+            5 : 4   #Escudo - obtener escudo
+        }
+        escudo = MC.run(probsEscudo, 100000)
 
         estados_nombres = {
-            1 : "Frio",
-            2 : "Calor"
+            1 : "municion",
+            2 : "vida",
+            3 : "velocidad",
+            4 : "escudo"
         }
 
         montecarlosProbs = {
-            1 : mimonte,
-            2 : mimonte2
+            1 : municion,
+            2 : vida,
+            3 : velocidad,
+            4 : escudo
         }
 
         self.markov = MK.run(estados_nombres,montecarlosProbs)

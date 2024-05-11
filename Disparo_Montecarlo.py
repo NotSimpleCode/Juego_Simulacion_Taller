@@ -4,10 +4,10 @@ import Montecarlo as MC
 class DisparoMontecarloClass():
     def __init__(self):
         self.valores_probabilidad_disparo = {
-            60 : 1,
-            20 : 2,
-            15 : 3,
-            5 : 6
+            60 : 1,  #60 % de probabilidad de hacer 1 de daño
+            20 : 2,  #20 % de probabilidad de hacer 2 de daño
+            15 : 3,  #15 % de probabilidad de hacer 3 de daño
+            5 : 6    #5 % de probabilidad de hacer 6 de daño
         }
         self.mimonte = MC.run(self.valores_probabilidad_disparo, 100000)
     
