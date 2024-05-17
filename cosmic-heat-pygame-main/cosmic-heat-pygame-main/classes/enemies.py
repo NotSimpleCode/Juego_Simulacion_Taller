@@ -6,17 +6,42 @@ from .constants import WIDTH, HEIGHT, ENEMY_FORCE
 
 class Enemy1(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, image):
+    def __init__(self, x, y, image, walk_images):
         super().__init__()
         self.image = image
+        self.walk_images = walk_images
         self.rect = self.image.get_rect(center=(x, y))
         self.speed = 4
         self.direction = random.choice([(-1, -1), (-1, 1), (1, -1), (1, 1)])
+        self.current_frame = 0
+        self.animation_timer = 0
+        self.animation_delay = 10  # Ajusta según la velocidad deseada de la animación
 
+    def direction_to_str(self):
+        if self.direction == (-1, 0):
+            return "left"
+        elif self.direction == (1, 0):
+            return "right"
+        elif self.direction == (0, -1):
+            return "up"
+        elif self.direction == (0, 1):
+            return "down"
+        else:
+            return "down"  # o cualquier valor por defecto que desees
+
+    
     def update(self, enemy_group):
         dx, dy = self.direction
         self.rect.x += dx * self.speed
         self.rect.y += dy * self.speed
+        
+        # Cambiar la imagen para simular la animación de caminar
+        self.animation_timer += 1
+        if self.animation_timer >= self.animation_delay:
+            direction_str = self.direction_to_str()
+            self.current_frame = (self.current_frame + 1) % len(self.walk_images[direction_str])
+            self.image = self.walk_images[direction_str][self.current_frame]
+            self.animation_timer = 0
 
         if self.rect.left < 5:
             self.rect.left = 5

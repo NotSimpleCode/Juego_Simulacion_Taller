@@ -81,6 +81,145 @@ explosion3_images = [pygame.image.load(f"images/explosion3/explosion{i}.png") fo
 # Cargar imágenes de "game over"
 game_over_images = [pygame.image.load(f'images/Protagonista/debil{i}.png').convert_alpha() for i in range(1, 7)]
 
+# Establecer las imágenes de la animación para cada dirección de movimiento
+enemy1_walk_left = [
+    pygame.image.load('images/enemy/enemy1_left1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_left2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_left3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_left4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_left5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_left6.png').convert_alpha()
+]
+enemy1_walk_right = [
+    pygame.image.load('images/enemy/enemy1_right1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_right2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_right3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_right4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_right5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_right6.png').convert_alpha()
+]
+enemy1_walk_back = [
+    pygame.image.load('images/enemy/enemy1_back1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_back2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_back3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_back4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_back5.png').convert_alpha()
+]
+enemy1_walk_front = [
+    pygame.image.load('images/enemy/enemy1_front1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_front2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy1_front3.png').convert_alpha()
+]
+
+# Diccionario que mapea las direcciones a las listas de imágenes correspondientes
+enemy1_walk_images = {
+    "left": enemy1_walk_left,
+    "right": enemy1_walk_right,
+    "up": enemy1_walk_back,
+    "down": enemy1_walk_front
+}
+
+
+# Establecer las imágenes de la animación para cada dirección de movimiento
+enemy2_walk_left = [
+    pygame.image.load('images/enemy/enemy2_left1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_left2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_left3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_left4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_left5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_left6.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_left7.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_left8.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_left9.png').convert_alpha()
+]
+enemy2_walk_right = [
+    pygame.image.load('images/enemy/enemy2_right1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_right2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_right3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_right4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_right5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_right6.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_right7.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_right8.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_right9.png').convert_alpha()
+]
+enemy2_walk_back = [
+    pygame.image.load('images/enemy/enemy2_back1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_back2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_back3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_back4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_back5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_back6.png').convert_alpha()
+]
+enemy2_walk_front = [
+    pygame.image.load('images/enemy/enemy2_front1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_front2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_front3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_front4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_front5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy2_front6.png').convert_alpha()
+]
+
+# Diccionario que mapea las direcciones a las listas de imágenes correspondientes
+enemy2_walk_images = {
+    "left": enemy2_walk_left,
+    "right": enemy2_walk_right,
+    "up": enemy2_walk_back,
+    "down": enemy2_walk_front
+}
+
+
+# Establecer las imágenes de la animación para cada dirección de movimiento
+enemy3_walk_left = [
+    pygame.image.load('images/enemy/enemy3_left1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_left2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_left3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_left4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_left5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_left6.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_left7.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_left8.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_left9.png').convert_alpha()
+]
+enemy3_walk_right = [
+    pygame.image.load('images/enemy/enemy3_right1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_right2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_right3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_right4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_right5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_right6.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_right7.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_right8.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_right9.png').convert_alpha()
+]
+enemy3_walk_back = [
+    pygame.image.load('images/enemy/enemy3_back1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_back2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_back3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_back4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_back5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_back6.png').convert_alpha()
+]
+enemy3_walk_front = [
+    pygame.image.load('images/enemy/enemy3_front1.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_front2.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_front3.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_front4.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_front5.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_front6.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_front7.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_front8.png').convert_alpha(),
+    pygame.image.load('images/enemy/enemy3_front9.png').convert_alpha()
+]
+
+# Diccionario que mapea las direcciones a las listas de imágenes correspondientes
+enemy3_walk_images = {
+    "left": enemy3_walk_left,
+    "right": enemy3_walk_right,
+    "up": enemy3_walk_back,
+    "down": enemy3_walk_front
+}
+
 # Después de la definición de otras variables globales
 shooting_animation_images = [
     pygame.image.load('images/Protagonista/player_shooting1.png').convert_alpha(),
@@ -281,10 +420,20 @@ while running:
 
     if random.randint(0, 120) == 0:
         enemy_img = random.choice(enemy1_img)
+        enemy_walk_images = {}  # Inicializamos un diccionario vacío para las imágenes de caminata
+        
+        if enemy_img == enemy1_img[0]:  # Si la imagen escogida es la primera de la lista
+            enemy_walk_images = enemy1_walk_images
+        elif enemy_img == enemy1_img[1]:  # Si la imagen escogida es la segunda de la lista
+            enemy_walk_images = enemy2_walk_images
+        elif enemy_img == enemy1_img[2]:  # Si la imagen escogida es la tercera de la lista
+           enemy_walk_images = enemy3_walk_images
+        
         enemy_object = Enemy1(
             random.randint(100, WIDTH - 50),
             random.randint(-HEIGHT, -50),
             enemy_img,
+            enemy_walk_images,
         )
         enemy1_group.add(enemy_object)
 
