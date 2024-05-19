@@ -229,8 +229,9 @@ enemy1_img = [
 enemy2_img = [
     pygame.image.load('images/enemy/enemy4_front1.png').convert_alpha()
 ]
+
 boss1_img = pygame.image.load('images/boss/boss1.png').convert_alpha()
-boss2_img = pygame.image.load('images/boss/boss2_1.png').convert_alpha()
+boss2_img = pygame.image.load('images/boss/boss2.png').convert_alpha()
 boss3_img = pygame.image.load('images/boss/boss3.png').convert_alpha()
 
 health_refill_img = pygame.image.load('images/refill/health_refill.png').convert_alpha()
