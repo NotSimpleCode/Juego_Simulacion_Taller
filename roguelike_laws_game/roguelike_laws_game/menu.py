@@ -4,7 +4,10 @@ import random
 import pygame
 import pygame.mixer
 
-from classes.constants import WIDTH, HEIGHT, BLACK, WHITE, RED
+from classes.constants import WIDTH, HEIGHT, BLACK, RED
+
+ROYAL_BLUE = (0, 0, 139)
+GOLD = (234, 190, 63)
 
 
 def animate_screen():
@@ -31,7 +34,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Main Menu")
 clock = pygame.time.Clock()
 
-mainmenu_img = pygame.image.load('images/mainmenu.jpg').convert()
+mainmenu_img = pygame.image.load('images/mainmenu.jpeg').convert()
 mainmenu_img = pygame.transform.scale(mainmenu_img, (WIDTH, HEIGHT))
 
 logo_img = pygame.image.load('images/ch.png').convert_alpha()
@@ -83,7 +86,7 @@ while show_menu:
                     explosion_sound.play()
                     animate_screen()
                     show_menu = False
-                    screen.fill(BLACK)
+                    screen.fill(ROYAL_BLUE)
                     import main
                     main.main()
                     break
@@ -98,7 +101,7 @@ while show_menu:
                         explosion_sound.play()
                         animate_screen()
                         show_menu = False
-                        screen.fill(BLACK)
+                        screen.fill(ROYAL_BLUE)
                         import game
                         game.main()
                         break
@@ -116,17 +119,17 @@ while show_menu:
     screen.blit(logo_img, (logo_x, logo_y))
 
     font = pygame.font.SysFont('Comic Sans MS', 40)
-    text = font.render("Play", True, WHITE)
-    pygame.draw.rect(screen, BLACK, play_button_rect, border_radius=10)
+    text = font.render("Play", True, GOLD)
+    pygame.draw.rect(screen, ROYAL_BLUE, play_button_rect, border_radius=10)
     if selected_button == 0:
-        pygame.draw.rect(screen, RED, play_button_rect, border_radius=10, width=4)
+        pygame.draw.rect(screen, GOLD, play_button_rect, border_radius=10, width=4)
     text_rect = text.get_rect()
     text_rect.center = play_button_rect.center
     screen.blit(text, text_rect)
-    text = font.render("Exit", True, WHITE)
-    pygame.draw.rect(screen, BLACK, quit_button_rect, border_radius=10)
+    text = font.render("Exit", True, GOLD)
+    pygame.draw.rect(screen, ROYAL_BLUE, quit_button_rect, border_radius=10)
     if selected_button == 1:
-        pygame.draw.rect(screen, RED, quit_button_rect, border_radius=10, width=4)
+        pygame.draw.rect(screen, GOLD, quit_button_rect, border_radius=10, width=4)
     text_rect = text.get_rect()
     text_rect.center = quit_button_rect.center
     screen.blit(text, text_rect)
