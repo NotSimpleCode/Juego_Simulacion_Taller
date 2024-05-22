@@ -3,7 +3,7 @@ import pygame
 from .constants import WIDTH, HEIGHT
 
 
-class Meteors(pygame.sprite.Sprite):
+class Explosives(pygame.sprite.Sprite):
 
     def __init__(self, x, y, image):
         super().__init__()
@@ -31,7 +31,7 @@ class Meteors(pygame.sprite.Sprite):
         surface.blit(self.image, self.rect)
 
 
-class Meteors2(pygame.sprite.Sprite):
+class Explosives2(pygame.sprite.Sprite):
 
     def __init__(self, x, y, image):
         super().__init__()
@@ -59,7 +59,7 @@ class Meteors2(pygame.sprite.Sprite):
         surface.blit(self.image, self.rect)
 
 
-class BlackHole(pygame.sprite.Sprite):
+class Hole(pygame.sprite.Sprite):
 
     def __init__(self, x, y, image):
         super().__init__()
