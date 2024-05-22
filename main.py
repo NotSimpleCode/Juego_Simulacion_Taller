@@ -16,12 +16,17 @@ from classes.explosions import Explosion, Explosion2
 from classes.enemies import Enemy1, Enemy2
 from classes.bosses import Boss1, Boss2, Boss3
 
+from Disparo_Montecarlo import DisparoMontecarloClass
+from PowerUp_Markov import PowerUpMarkovClass
+
+disparos = DisparoMontecarloClass()
+poderes = PowerUpMarkovClass()
 
 pygame.init()
 music_background()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 surface = pygame.Surface((WIDTH, HEIGHT))
-pygame.display.set_caption("Cosmic Heat")
+pygame.display.set_caption("Laws Game")
 clock = pygame.time.Clock()
 
 
@@ -379,7 +384,6 @@ while running:
 
             # Cambiar la imagen del jugador al disparar
             player.shoot()
-                    
                     
             # Crear y disparar la bala en la dirección actual del jugador
             if player.direction == 'right':
@@ -809,7 +813,7 @@ while running:
         for bullet_collision in bullet_collisions:
             explosion2 = Explosion(boss1_object.rect.center, explosion2_images)
             explosions2.add(explosion2)
-            boss1_health -= 5
+            boss1_health -= disparos.obtenerDisparo()
             if boss1_health <= 0:
                 explosion = Explosion2(boss1_object.rect.center, explosion3_images)
                 explosions.add(explosion)
@@ -857,7 +861,7 @@ while running:
         for bullet_collision in bullet_collisions:
             explosion2 = Explosion2(boss2_object.rect.center, explosion2_images)
             explosions2.add(explosion2)
-            boss2_health -= 8
+            boss2_health -= disparos.obtenerDisparo()
             if boss2_health <= 0:
                 explosion2 = Explosion2(boss2_object.rect.center, explosion3_images)
                 explosions2.add(explosion2)
@@ -905,7 +909,7 @@ while running:
         for bullet_collision in bullet_collisions:
             explosion2 = Explosion2(boss3_object.rect.center, explosion2_images)
             explosions2.add(explosion2)
-            boss3_health -= 6
+            boss3_health -= disparos.obtenerDisparo()
             if boss3_health <= 0:
                 explosion2 = Explosion2(boss3_object.rect.center, explosion3_images)
                 explosions2.add(explosion2)
