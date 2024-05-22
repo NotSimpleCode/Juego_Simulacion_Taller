@@ -11,7 +11,7 @@ from menu import show_menu, animate_screen
 from classes.player import Player
 from classes.bullets import Bullet
 from classes.refill import BulletRefill, HealthRefill, DoubleRefill, ExtraScore
-from classes.meteors import Meteors, Meteors2, BlackHole
+from classes.explosives import Explosives, Explosives2, Hole
 from classes.explosions import Explosion, Explosion2
 from classes.enemies import Enemy1, Enemy2
 from classes.bosses import Boss1, Boss2, Boss3
@@ -71,7 +71,7 @@ boss3_health_bar_rect = pygame.Rect(0, 0, 200, 5)
 boss3_spawned = False
 
 bg_y_shift = -HEIGHT
-background_img = pygame.image.load('images/bg/background.jpeg').convert()
+background_img = pygame.image.load('images/bg/background.png').convert()
 background_img2 = pygame.image.load('images/bg/background2.png').convert()
 background_img3 = pygame.image.load('images/bg/background3.png').convert()
 background_img4 = pygame.image.load('images/bg/background4.png').convert()
@@ -226,13 +226,12 @@ enemy3_walk_images = {
 }
 
 enemy1_img = [
-    pygame.image.load('images/enemy/enemy1_front1.png').convert_alpha(),
     pygame.image.load('images/enemy/enemy2_front1.png').convert_alpha(),
     pygame.image.load('images/enemy/enemy3_front1.png').convert_alpha()
 ]
 
 enemy2_img = [
-    pygame.image.load('images/enemy/enemy4_front1.png').convert_alpha()
+    pygame.image.load('images/enemy/enemy1_front3.png').convert_alpha()
 ]
 
 boss1_img = pygame.image.load('images/boss/boss1.png').convert_alpha()
@@ -243,22 +242,18 @@ health_refill_img = pygame.image.load('images/refill/health_refill.png').convert
 bullet_refill_img = pygame.image.load('images/refill/bullet_refill.png').convert_alpha()
 double_refill_img = pygame.image.load('images/refill/double_refill.png').convert_alpha()
 
-meteor_imgs = [
-    pygame.image.load('images/meteors/meteor_1.png').convert_alpha(),
-    pygame.image.load('images/meteors/meteor_2.png').convert_alpha(),
-    pygame.image.load('images/meteors/meteor_3.png').convert_alpha(),
-    pygame.image.load('images/meteors/meteor_4.png').convert_alpha()
+explosive_imgs = [
+    pygame.image.load('images/explosives/explosive_1.png').convert_alpha()
 ]
-meteor2_imgs = [
-    pygame.image.load('images/meteors/meteor2_1.png').convert_alpha(),
-    pygame.image.load('images/meteors/meteor2_2.png').convert_alpha(),
-    pygame.image.load('images/meteors/meteor2_3.png').convert_alpha(),
-    pygame.image.load('images/meteors/meteor2_4.png').convert_alpha()
+explosive2_imgs = [
+    pygame.image.load('images/explosives/explosive1_1.png').convert_alpha(),
+    pygame.image.load('images/explosives/explosive1_2.png').convert_alpha()
 ]
 extra_score_img = pygame.image.load('images/score/score_coin.png').convert_alpha()
-black_hole_imgs = [
-    pygame.image.load('images/hole/black_hole.png').convert_alpha(),
-    pygame.image.load('images/hole/black_hole2.png').convert_alpha()
+
+hole_imgs = [
+    pygame.image.load('images/hole/hole.png').convert_alpha(),
+    pygame.image.load('images/hole/hole2.png').convert_alpha()
 ]
 
 initial_player_pos = (WIDTH // 2, HEIGHT - 100)
@@ -449,11 +444,9 @@ while running:
         enemy_walk_images = {}  # Inicializamos un diccionario vacío para las imágenes de caminata
         
         if enemy_img == enemy1_img[0]:  # Si la imagen escogida es la primera de la lista
-            enemy_walk_images = enemy1_walk_images
-        elif enemy_img == enemy1_img[1]:  # Si la imagen escogida es la segunda de la lista
             enemy_walk_images = enemy2_walk_images
-        elif enemy_img == enemy1_img[2]:  # Si la imagen escogida es la tercera de la lista
-           enemy_walk_images = enemy3_walk_images
+        elif enemy_img == enemy1_img[1]:  # Si la imagen escogida es la segunda de la lista
+            enemy_walk_images = enemy3_walk_images
         
         enemy_object = Enemy1(
             random.randint(100, WIDTH - 50),
@@ -515,8 +508,8 @@ while running:
         extra_score_group.add(extra_score)
 
     if score > 3000 and random.randint(0, 100) == 0:
-        meteor_img = random.choice(meteor_imgs)
-        meteor_object = Meteors(
+        meteor_img = random.choice(explosive_imgs)
+        meteor_object = Explosives(
             random.randint(0, 50),
             random.randint(0, 50),
             meteor_img,
@@ -524,8 +517,8 @@ while running:
         meteor_group.add(meteor_object)
 
     if random.randint(0, 90) == 0:
-        meteor2_img = random.choice(meteor2_imgs)
-        meteor2_object = Meteors2(
+        meteor2_img = random.choice(explosive2_imgs)
+        meteor2_object = Explosives2(
             random.randint(100, WIDTH - 50),
             random.randint(-HEIGHT, -50 - meteor2_img.get_rect().height),
             meteor2_img,
@@ -533,8 +526,8 @@ while running:
         meteor2_group.add(meteor2_object)
 
     if score > 1000 and random.randint(0, 500) == 0:
-        black_hole_img = random.choice(black_hole_imgs)
-        black_hole_object = BlackHole(
+        black_hole_img = random.choice(hole_imgs)
+        black_hole_object = Hole(
             random.randint(100, WIDTH - 50),
             random.randint(-HEIGHT, -50 - black_hole_img.get_rect().height),
             black_hole_img,
