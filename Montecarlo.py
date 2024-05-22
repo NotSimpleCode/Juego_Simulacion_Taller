@@ -76,6 +76,7 @@ def run(valores, m):
     else:
         print("Montecarlo mal formulado! -  Debe sumar 100 porciento")
         return None
+
 """
 valores = {
     60 : 1,
@@ -84,9 +85,11 @@ valores = {
     5 : 6
 }
 
-mimonte = run(valores, 100000)
+mimonte = run(valores, 100000) #minimo 100 mil, 
 if mimonte!=None:
-    print(mimonte.calcularResultado())
+    for i in range(1000):
+        print(mimonte.calcularResultado())
+
     
 """
 

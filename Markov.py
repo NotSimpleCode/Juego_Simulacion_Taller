@@ -1,5 +1,5 @@
 #import riManage
-
+#import Montecarlo as MC
 
 
 class MarkovClass():
@@ -45,13 +45,10 @@ montecarlosProbs = {
 def run(estados_nombres,montecarlosProbs):
     markov = MarkovClass(estados_nombres,montecarlosProbs)
     return markov
-    """
-    for i in range (1000):
-        print(markov.obtenerSiguienteEstado())
-        print(markov.obtenerNombreEstado())
-    """
 
-#run()
+    
+
+#run(estados_nombres,montecarlosProbs)
 
 
 

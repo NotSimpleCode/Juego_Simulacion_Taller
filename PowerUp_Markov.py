@@ -7,47 +7,47 @@ class PowerUpMarkovClass():
         probsMunicion = {
             10 : 1, #Municion - obtener municion
             40 : 2, #Municion - obtener vida
-            30 : 3, #Municion - obtener velocidad
-            20 : 4  #Municion - obtener escudo
+            30 : 3, #Municion - obtener doble_poder
+            20 : 4  #Municion - obtener puntos_extra
         }
         municion = MC.run(probsMunicion, 100000)
 
         probsVida = {
             40 : 1, #Vida - obtener municion
             10 : 2, #Vida - obtener vida
-            20 : 3, #Vida - obtener velocidad
-            30 : 4  #Vida - obtener escudo
+            20 : 3, #Vida - obtener doble_poder
+            30 : 4  #Vida - obtener puntos_extra
         }
         vida = MC.run(probsVida, 100000)
 
-        probsVelocidad = {
-            15 : 1, #Velocidad - obtener municion
-            15 : 2, #Velocidad - obtener vida
-            10 : 3, #Velocidad - obtener velocidad
-            60 : 4  #Velocidad - obtener escudo
+        probsdoble_poder = {
+            44 : 1, #doble_poder - obtener municion
+            5 : 2, #doble_poder - obtener vida
+            1 : 3, #doble_poder - obtener doble_poder
+            50 : 4  #doble_poder - obtener puntos_extra
         }
-        velocidad = MC.run(probsVelocidad, 100000)
+        doble_poder = MC.run(probsdoble_poder, 100000)
 
-        probsEscudo = {
-            80 : 1, #Escudo - obtener municion
-            10 : 2, #Escudo - obtener vida
-            5 : 3,  #Escudo - obtener velocidad
-            5 : 4   #Escudo - obtener escudo
+        probspuntos_extra = {
+            80 : 1, #puntos_extra - obtener municion
+            13 : 2, #puntos_extra - obtener vida
+            5 : 3,  #puntos_extra - obtener doble_poder
+            2 : 4   #puntos_extra - obtener puntos_extra
         }
-        escudo = MC.run(probsEscudo, 100000)
+        puntos_extra = MC.run(probspuntos_extra, 100000)
 
         estados_nombres = {
-            1 : "municion",
-            2 : "vida",
-            3 : "velocidad",
-            4 : "escudo"
+            1 : "bullet_refill",
+            2 : "health",
+            3 : "double_refill",
+            4 : "extra_points"
         }
 
         montecarlosProbs = {
             1 : municion,
             2 : vida,
-            3 : velocidad,
-            4 : escudo
+            3 : doble_poder,
+            4 : puntos_extra
         }
 
         self.markov = MK.run(estados_nombres,montecarlosProbs)
@@ -60,5 +60,5 @@ class PowerUpMarkovClass():
 Ejemplo de uso de la clase, cada vez que se llame la funcion obtenerSiguientePoder() se calcula el siguiente poder 
 """
 powerUps = PowerUpMarkovClass()
-for i in range(100000):
+for i in range(1000):
     print(powerUps.obtenerSiguientePoder())
