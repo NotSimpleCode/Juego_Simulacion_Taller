@@ -5,18 +5,18 @@ class PowerUpMarkovClass():
     def __init__(self):
         
         probsMunicion = {
-            10 : 1, #Municion - obtener municion
-            40 : 2, #Municion - obtener vida
-            30 : 3, #Municion - obtener doble_poder
-            20 : 4  #Municion - obtener puntos_extra
+            39 : 1, #Municion - obtener municion
+            50 : 2, #Municion - obtener vida
+            10 : 3, #Municion - obtener doble_poder
+            1 : 4  #Municion - obtener puntos_extra
         }
         municion = MC.run(probsMunicion, 100000)
 
         probsVida = {
-            40 : 1, #Vida - obtener municion
-            10 : 2, #Vida - obtener vida
-            20 : 3, #Vida - obtener doble_poder
-            30 : 4  #Vida - obtener puntos_extra
+            60 : 1, #Vida - obtener municion
+            30 : 2, #Vida - obtener vida
+            9 : 3, #Vida - obtener doble_poder
+            1 : 4  #Vida - obtener puntos_extra
         }
         vida = MC.run(probsVida, 100000)
 
@@ -30,9 +30,9 @@ class PowerUpMarkovClass():
 
         probspuntos_extra = {
             80 : 1, #puntos_extra - obtener municion
-            13 : 2, #puntos_extra - obtener vida
-            5 : 3,  #puntos_extra - obtener doble_poder
-            2 : 4   #puntos_extra - obtener puntos_extra
+            15 : 2, #puntos_extra - obtener vida
+            4 : 3,  #puntos_extra - obtener doble_poder
+            1 : 4   #puntos_extra - obtener puntos_extra
         }
         puntos_extra = MC.run(probspuntos_extra, 100000)
 
@@ -59,6 +59,6 @@ class PowerUpMarkovClass():
 """
 Ejemplo de uso de la clase, cada vez que se llame la funcion obtenerSiguientePoder() se calcula el siguiente poder 
 """
-powerUps = PowerUpMarkovClass()
-for i in range(1000):
-    print(powerUps.obtenerSiguientePoder())
+#powerUps = PowerUpMarkovClass()
+#for i in range(1000):
+#    print(powerUps.obtenerSiguientePoder())
