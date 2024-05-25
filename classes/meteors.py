@@ -72,7 +72,7 @@ class Hole(pygame.sprite.Sprite):
         self.direction_y = 1
         self.angle = 0
         self.speed = 2
-        self.sound_effect = pygame.mixer.Sound("game_sounds/damage/black_hole.mp3")
+        self.sound_effect = pygame.mixer.Sound("game_sounds/damage/hole.mp3")
 
     def update(self):
         self.rect.y += self.speed * self.direction_y
