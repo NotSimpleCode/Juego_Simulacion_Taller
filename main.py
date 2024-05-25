@@ -3,6 +3,10 @@ import sys
 import pygame
 import random
 
+from lineasespera.LineaEspera import LineasEspera
+from caminatas.CaminataH import CaminataH
+from caminatas.CaminataHVD import CaminataHVD
+
 from controls import move_player, move_player_with_joystick
 from classes.constants import WIDTH, HEIGHT, FPS, SHOOT_DELAY
 from functions import show_game_over, music_background
@@ -241,6 +245,9 @@ enemy2_img = [
 boss1_img = pygame.image.load('images/boss/boss1.png').convert_alpha()
 boss2_img = pygame.image.load('images/boss/boss2.png').convert_alpha()
 boss3_img = pygame.image.load('images/boss/boss3.png').convert_alpha()
+caminata_boss1 = CaminataH()
+caminata_boss2 = CaminataHVD()
+caminata_boss3 = CaminataHVD()
 
 health_refill_img = pygame.image.load(
     'images/refill/health_refill.png').convert_alpha()
@@ -295,6 +302,11 @@ extra_points = False
 power_up_time = 0
 power_spawn_time = 0
 power_is = False
+
+lista_lineas_espera = LineasEspera().caminar(1000,4000) #maximo y minimo en segundos
+lista_final = []
+for i in range(len(lista_lineas_espera)):
+    lista_final.append((pygame.time.get_ticks() + lista_lineas_espera[i]) + 5000)# 30000 tiempo de carga del juego
 
 while running:
     # si se supera el tiempo de aparicion de poder lo agrega - con el fin de que no todo el tiempo esten apareciendo poderes
@@ -501,8 +513,10 @@ while running:
 
     if score > hi_score:
         hi_score = score
-
-    if random.randint(0, 120) == 0:
+    #aplicacion linea de espera
+    
+    if len(lista_final) != 0 and pygame.time.get_ticks() > lista_final[0]:
+        lista_final.pop(0)
         enemy_img = random.choice(enemy1_img)
         enemy_walk_images = {}  # Inicializamos un diccionario vacío para las imágenes de caminata
 
@@ -537,6 +551,7 @@ while running:
             random.randint(200, WIDTH - 100),
             random.randint(-HEIGHT, -100),
             boss1_img,
+            caminata_boss1
         )
         boss1_group.add(boss1_object)
         boss1_spawned = True
@@ -548,6 +563,7 @@ while running:
             random.randint(200, WIDTH - 100),
             random.randint(-HEIGHT, -100),
             boss2_img,
+            caminata_boss2
         )
         boss2_group.add(boss2_object)
         boss2_spawned = True
@@ -559,6 +575,7 @@ while running:
             random.randint(200, WIDTH - 100),
             random.randint(-HEIGHT, -100),
             boss3_img,
+            caminata_boss3
         )
         boss3_group.add(boss3_object)
         boss3_spawned = True

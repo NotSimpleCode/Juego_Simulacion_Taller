@@ -64,7 +64,7 @@ class riManage():
         listadoRi = []
 
         for i in range(cantidad):
-            listadoRi.append(self.obtenerRandom()) 
+            listadoRi.append(self.obtenerRandom(100000)) 
 
         return listadoRi
 

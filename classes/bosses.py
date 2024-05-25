@@ -1,18 +1,19 @@
 import pygame
 import random
 import math
-
+from caminatas.CaminataH import CaminataH
+from caminatas.CaminataHVD import CaminataHVD
 from .constants import WIDTH, HEIGHT
 
 
 class Boss1(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, image):
+    def __init__(self, x, y, image, caminataH):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect(center=(x, y))
         self.speed = 6
-        self.direction = random.choice([(-1, 0), (1, 0)])
+        self.direction = caminataH
         self.shoot_timer = 0
         self.shots_fired = 0
 
@@ -20,7 +21,7 @@ class Boss1(pygame.sprite.Sprite):
         self.rect.x += math.sin(pygame.time.get_ticks() * 0.01) * 3
         self.rect.y += math.sin(pygame.time.get_ticks() * 0.01) * 3
         if self.shots_fired < 20:
-            dx, dy = self.direction
+            dx, dy = self.direction.obtener_direccion()
             self.rect.x += dx * self.speed
             self.rect.y = max(self.rect.y, 50)
 
@@ -43,7 +44,8 @@ class Boss1(pygame.sprite.Sprite):
             self.speed = 10
             dx = player.rect.centerx - self.rect.centerx
             dy = player.rect.centery - self.rect.centery
-            direction = pygame.math.Vector2(dx, dy).normalize()
+            if(dx != 0 and dy != 0):
+                direction = pygame.math.Vector2(dx, dy).normalize()
 
             self.rect.x += direction.x * self.speed
             self.rect.y += direction.y * self.speed
@@ -71,13 +73,13 @@ class Boss1Bullet(pygame.sprite.Sprite):
 
 class Boss2(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, image):
+    def __init__(self, x, y, image,caminataHVD):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect(center=(x, y))
         self.speed = 5
-        self.direction = random.choice([(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (1, -1), (-1, 1), (1, 1)])
-        self.direction_x, self.direction_y = self.direction
+        self.direction = caminataHVD
+        self.direction_x, self.direction_y = self.direction.obtener_direccion()
         self.shoot_timer = 0
         self.shots_fired = 0
 
@@ -85,8 +87,8 @@ class Boss2(pygame.sprite.Sprite):
         self.rect.x += math.sin(pygame.time.get_ticks() * 0.01) * 2
         self.rect.y += math.sin(pygame.time.get_ticks() * 0.01) * 2
         if self.shots_fired < 20:
-            dx, dy = self.direction
-            if self.direction in [(-1, -1), (1, -1), (-1, 1), (1, 1)]:
+            dx, dy = self.direction.obtener_direccion()
+            if self.direction.obtener_direccion() in [(-1, -1), (1, -1), (-1, 1), (1, 1)]:
                 self.speed = 5 / math.sqrt(2)
             else:
                 self.speed = 5
@@ -114,7 +116,7 @@ class Boss2(pygame.sprite.Sprite):
                 if self.direction_x == 0:
                     self.direction_x = 1
 
-            self.direction = (self.direction_x, self.direction_y)
+            #self.direction = (self.direction_x, self.direction_y)
             self.shoot_timer += 1
             if self.shoot_timer >= 100:
                 dx = player.rect.centerx - self.rect.centerx
@@ -129,8 +131,8 @@ class Boss2(pygame.sprite.Sprite):
                 self.speed = 5 / math.sqrt(2)
             dx = player.rect.centerx - self.rect.centerx
             dy = player.rect.centery - self.rect.centery
-            direction = pygame.math.Vector2(dx, dy).normalize()
-
+            if(dx != 0 and dy != 0):
+                direction = pygame.math.Vector2(dx, dy).normalize()
             self.rect.x += direction.x * self.speed
             self.rect.y += direction.y * self.speed
 
@@ -169,13 +171,13 @@ class Boss2Bullet(pygame.sprite.Sprite):
 
 class Boss3(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, image):
+    def __init__(self, x, y, image, caminataHVD):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect(center=(x, y))
         self.speed = 5
-        self.direction = random.choice([(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (1, -1), (-1, 1), (1, 1)])
-        self.direction_x, self.direction_y = self.direction
+        self.direction = caminataHVD
+        self.direction_x, self.direction_y = self.direction.obtener_direccion()
         self.shoot_timer = 0
         self.shots_fired = 0
         self.teleport_timer = 0
@@ -185,8 +187,8 @@ class Boss3(pygame.sprite.Sprite):
         self.rect.x += math.sin(pygame.time.get_ticks() * 0.01) * 2
         self.rect.y += math.sin(pygame.time.get_ticks() * 0.01) * 2
         if self.shots_fired < 20:
-            dx, dy = self.direction
-            if self.direction in [(-1, -1), (1, -1), (-1, 1), (1, 1)]:
+            dx, dy = self.direction.obtener_direccion()
+            if self.direction.obtener_direccion() in [(-1, -1), (1, -1), (-1, 1), (1, 1)]:
                 self.speed = 5 / math.sqrt(2)
             else:
                 self.speed = 5
@@ -214,7 +216,7 @@ class Boss3(pygame.sprite.Sprite):
                 if self.direction_x == 0:
                     self.direction_x = 1
 
-            self.direction = (self.direction_x, self.direction_y)
+            #self.direction = (self.direction_x, self.direction_y)
             self.shoot_timer += 1
             if self.shoot_timer >= 120:
                 dx = player.rect.centerx - self.rect.centerx
@@ -229,8 +231,8 @@ class Boss3(pygame.sprite.Sprite):
                 self.speed = 5 / math.sqrt(2)
             dx = player.rect.centerx - self.rect.centerx
             dy = player.rect.centery - self.rect.centery
-            direction = pygame.math.Vector2(dx, dy).normalize()
-
+            if(dx != 0 and dy != 0):
+                direction = pygame.math.Vector2(dx, dy).normalize()
             self.rect.x += direction.x * self.speed
             self.rect.y += direction.y * self.speed
 
